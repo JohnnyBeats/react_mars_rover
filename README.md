@@ -3,7 +3,7 @@
 ## About The Application
 This application(SPA) is my take on the [marsrovertechchallenge](https://code.google.com/archive/p/marsrovertechchallenge/) done in React with a basic front-end and testing with [Testing Library](https://testing-library.com/).
 
-## Rover rule assumptions
+## Rover Rule Assumptions
 - Rovers will ignore commands if they move them off the provided grid or if they will make them collide with other rovers.
 - Rover commands fire 2 seconds apart for the visual entity(the browser) to display a moving object and for animations to finish
 - Rover coordinates can't be negative numbers
