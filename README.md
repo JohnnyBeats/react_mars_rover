@@ -1,4 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Google Mars Rover Challenge with React
+
+## About The Application
+This application(SPA) is my take on the [marsrovertechchallenge](https://code.google.com/archive/p/marsrovertechchallenge/) done in React with a basic front-end and testing with [Testing Library](https://testing-library.com/).
+
+## Rover rule assumptions
+- Rovers will ignore commands if they move them off the provided grid or if they will make them collide with other rovers.
+- Rover commands fire 2 seconds apart for the visual entity(the browser) to display a moving object and for animations to finish
+- Rover coordinates can't be negative numbers
+- Rovers can't start on the same position
+- Rovers move one at a time
+
+## Limitations
+- The performance is bad when going over 100 grid size. I would like to page the grid for this and also make the screen follow the rover around.
+- The app was developed and tested only in chrome
+- The active rover doesn't scroll the view to focus rovers when the grid is large
+
+## Getting Started
+1. Clone the repository
+2. Install dependencies 
+    #### `yarn install`
+3. Run the dev server 
+    #### `yarn start`
+4. Navigate to the application's url http://localhost:3000/
+
+
+
+## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
