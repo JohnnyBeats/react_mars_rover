@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SnackMessage component renders 1`] = `
+<div
+  class="message"
+>
+  <span
+    class="close"
+    data-testid="closeButton"
+  >
+    x
+  </span>
+  <div
+    class="text"
+    data-testid="messageText"
+  >
+    Test the message!
+  </div>
+</div>
+`;

@@ -1,0 +1,252 @@
+:root {
+  --50-dark: rgba(0, 0, 0, .5);
+  --dark-font-color: #ffffff;
+}
+
+html,
+.App,
+.cover,
+.rover,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-image: url(Images/floor.jpg);
+  position: absolute;
+}
+
+input[type='button'], .button{
+  background: #121212db;
+  color: var(--dark-font-color);
+  border: none;
+  padding: 1em;
+  box-shadow: 0 0 0 1px var(--50-dark);
+}
+
+textarea[name='input']{
+  width: 50vw;
+  height: 50vh;
+  background: rgba(0,0,0,0.8);
+  color: var(--dark-font-color);
+  border-color: #000000;
+  resize: none;
+  padding: 2em;
+}
+
+button.openForm{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+}
+
+.App {
+  text-align: center;
+}
+
+.messageContainer{
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 330px;
+  height: calc(100% - 90px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.messageContainer .message{
+  width: 300px;
+  background: #121212db;
+  box-shadow: 0 0 3px 1px rgba(0,0,0,.6);
+  border: 1px solid #565656;
+  color: #fff;
+  right: 0;
+  position: relative;
+  margin: 1em;
+}
+
+.messageContainer .message .text{
+  max-width: calc(100% - 3em);
+  padding: 1em;
+  text-align: left;
+}
+
+.messageContainer .message .close{
+  position: relative;
+  float: right;
+  cursor: pointer;
+  padding: 1em;
+}
+
+.cover{
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  background: #121212 url(Images/inputCoverBackground.jpg);
+  background-size: cover;
+}
+
+.cover h1{
+  opacity: .6;
+  font-size: 4vw;
+}
+
+.cover form{
+  display: block;
+}
+
+.cover.hidden{
+  height: 0;
+  width: 0;
+  display: block;
+}
+
+.grid{
+  display: table;
+  border-style: solid;
+  border-color: var(--50-dark);
+  border-width: 1px 0 0 1px;
+  margin: 16px auto 16px auto;
+  color: #000;
+  font-weight: bolder;
+}
+
+.grid.hidden{
+  display: none;
+}
+
+.column{
+  display: table-cell;
+  border-style: solid;
+  border-color: var(--50-dark);
+  border-width: 0 1px 1px 0;
+  width: 5vw;
+  height: 5vw;
+  min-width: 5vw;
+  min-height: 5vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--50-dark);
+  vertical-align: middle;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.columnCoordinate{
+  transform: rotate(45deg);
+  display: block;
+  color: rgba(0,0,0,.7);
+}
+
+.rover{
+  position: relative;
+  background: url(Images/rover.png);
+  background-size: cover;
+  box-sizing: border-box;
+  animation: ease;
+  -webkit-transition-duration: 1s;
+  -webkit-transition-property: -webkit-transform;
+}
+
+.rover.active{
+  background-color: #ffff003d;
+}
+
+@keyframes welcome {
+  from {
+    font-size: 14vw;
+    opacity: 0;
+  }
+  25%  {
+    opacity: 1;
+  }
+  50%  {
+    font-size: 14vw;
+  }
+  to {
+    font-size: 4vw;
+    opacity: .6;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: 100%;
+    width: 100%;
+  }
+  to {
+    height: 0;
+    width: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  80%  {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cover h1 {
+    animation: welcome 3s linear;
+  }
+  .cover form{
+    animation: appear 4s linear;
+  }
+  .cover.hidden{
+    animation: slideUp .3s linear;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .column {
+    font-size: 1.5em;
+    width: 10vw;
+    height: 10vw;
+    min-width: 10vw;
+    min-height: 10vw;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .column {
+    width: 15vw;
+    height: 15vw;
+    min-width: 15vw;
+    min-height: 15vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .columnCoordinate{
+    color: rgba(0,0,0,1);
+  }
+
+  .cover h1 {
+    font-size: 8vw;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  textarea[name='input'] {
+    width: 75vw;
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .cover h1 {
+    font-size: 4vw;
+  }
+
+  textarea[name='input'] {
+    height: 50vh;
+  }
+}

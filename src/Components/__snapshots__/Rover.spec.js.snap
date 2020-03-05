@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The rover component renders the rover as active 1`] = `
+<div
+  class="rover north active"
+  data-testid="rover"
+  style="transform: rotate(0deg);"
+/>
+`;
+
+exports[`The rover component renders the rover with direction east 1`] = `
+<div
+  class="rover east inActive"
+  data-testid="rover"
+  style="transform: rotate(0deg);"
+/>
+`;
+
+exports[`The rover component renders the rover with direction north 1`] = `
+<div
+  class="rover north inActive"
+  data-testid="rover"
+  style="transform: rotate(0deg);"
+/>
+`;
+
+exports[`The rover component renders the rover with direction south 1`] = `
+<div
+  class="rover south inActive"
+  data-testid="rover"
+  style="transform: rotate(0deg);"
+/>
+`;
+
+exports[`The rover component renders the rover with direction west 1`] = `
+<div
+  class="rover west inActive"
+  data-testid="rover"
+  style="transform: rotate(0deg);"
+/>
+`;
