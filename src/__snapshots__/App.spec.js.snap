@@ -436,7 +436,7 @@ MMRMMRMRRM
 </div>
 `;
 
-exports[`App renders according to spec with cover and form visible 1`] = `
+exports[`App renders according to spec with cover and form visible single payer 1`] = `
 <div
   class="App"
 >
@@ -467,6 +467,101 @@ MMRMMRMRRM
         value="Start Rovers"
       />
     </form>
+  </div>
+  <div
+    class="grid hidden"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="column"
+      >
+        <span
+          class="columnCoordinate"
+          title="0,0"
+        >
+          0,0
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="messageContainer"
+  />
+</div>
+`;
+
+exports[`App renders according to spec with game mode choices available 1`] = `
+<div
+  class="App"
+>
+  <div
+    class="cover"
+    data-testid="inputCover"
+  >
+    <h1>
+       MARS ROVER 
+    </h1>
+    <div
+      class="gameModeSelection"
+    >
+      <button
+        class="gameMode button"
+        data-testid="Multiplayer"
+        value="Multiplayer"
+      >
+        Multiplayer
+      </button>
+      <br />
+      <br />
+      <button
+        class="gameMode button"
+        data-testid="SinglePlayer"
+        value="SinglePlayer"
+      >
+        Single Player
+      </button>
+    </div>
+  </div>
+  <div
+    class="grid hidden"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="column"
+      >
+        <span
+          class="columnCoordinate"
+          title="0,0"
+        >
+          0,0
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="messageContainer"
+  />
+</div>
+`;
+
+exports[`App renders according to spec with waiting for players multiplayer 1`] = `
+<div
+  class="App"
+>
+  <div
+    class="cover"
+    data-testid="inputCover"
+  >
+    <h1>
+       MARS ROVER 
+    </h1>
+    <h2>
+      Waiting for players to connect...
+    </h2>
   </div>
   <div
     class="grid hidden"

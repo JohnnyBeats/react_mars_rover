@@ -3,13 +3,18 @@ import './App.css';
 import Grid from './Components/Grid.js'
 import SnackMessage from "./Components/SnackMessage";
 import InputForm from "./Components/InputForm";
-import {RoverTeam} from "./Classes/Rover";
+import GameModeSelection from "./Components/GameModeSelection";
+import {RoverEngineMultiplayer, RoverTeam} from "./Classes/Rover";
+import firebase from "./firebase.js";
+import GameModeEnum from "./Classes/GameModeEnum";
+import DirectionEnum from "./Classes/DirectionEnum";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             showCover: true,
+            gameMode: undefined,
             roverTeam: new RoverTeam(),
             gridSize: [0,0],
             roverIndex: 0,
@@ -18,6 +23,7 @@ class App extends React.Component {
         };
 
         this.setAppData = this.setAppData.bind(this);
+        this.setGameMode = this.setGameMode.bind(this);
         this.addMessage = this.addMessage.bind(this);
         this.resetRovers = this.resetRovers.bind(this);
         this.startRovers = this.startRovers.bind(this);
@@ -46,6 +52,49 @@ class App extends React.Component {
         });
 
         this.startRovers();
+    };
+
+    setGameMode = (gameMode) => {
+        this.setState({
+            gameMode: gameMode
+        }, () =>{
+            if(this.state.gameMode === GameModeEnum.MULTIPLAYER){
+                const playersRef = firebase.database().ref("Game/Players");
+
+                const randomGridNumber = (max) => {
+                    return Math.floor(Math.random() * (max + 1));
+                }
+
+                playersRef.on("value", (snapshot) => {
+                    let players = snapshot.val();
+                    let roverTeam = new RoverTeam();
+                    let maxGridInput = [8, 4];
+
+                    players.map((player, index) => {
+                        let position = [randomGridNumber(maxGridInput[0]), randomGridNumber(maxGridInput[1])];
+                        let direction = DirectionEnum.NORTH;
+                        let commands = "";
+                        let playerRoverEngine = new RoverEngineMultiplayer(position, direction, commands, maxGridInput, roverTeam, index, player.name);
+
+                        roverTeam.rovers.push(playerRoverEngine);
+
+                        const playerCommandRef = firebase.database().ref("Game/Commands/" + index + "/command");
+
+                        playerCommandRef.on("value", (snapshot) => {
+                            let commandData = snapshot.val();
+
+                            playerRoverEngine.processCommand(commandData.command);
+
+                            this.setState({
+                                roverTeam: this.state.roverTeam
+                            });
+                        });
+                    });
+
+                    this.setAppData(false, roverTeam, maxGridInput);
+                });
+            }
+        });
     };
 
     resetRovers = () => {
@@ -99,9 +148,16 @@ class App extends React.Component {
             <div className="App">
                 <div data-testid="inputCover" className={this.state.showCover ? "cover": "cover hidden"}>
                     <h1> MARS ROVER </h1>
-                    <InputForm setAppData={this.setAppData}/>
+                    {this.state.gameMode === undefined &&
+                        <GameModeSelection setGameMode={this.setGameMode} />
+                    }
+                    {this.state.gameMode === GameModeEnum.MULTIPLAYER &&
+                        <h2>Waiting for players to connect...</h2>
+                    }
+                    {this.state.gameMode === GameModeEnum.SINGLE_PLAYER &&
+                        <InputForm setAppData={this.setAppData}/>
+                    }
                 </div>
-
             {!this.state.showCover &&
                 <button className="openForm button" onClick={this.resetRovers}>
                     Edit Commands

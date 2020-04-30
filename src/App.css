@@ -42,6 +42,10 @@ button.openForm{
   z-index: 2;
 }
 
+button.gameMode{
+  min-width: 20vw;
+}
+
 .App {
   text-align: center;
 }
@@ -154,99 +158,99 @@ button.openForm{
   background-color: #ffff003d;
 }
 
+.rover .roverName{
+  display: table-cell;
+  max-width: 5vw;
+  width: 5vw;
+  height: 5vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  vertical-align: middle;
+  font-size: 0.8em;
+}
+
 @keyframes welcome {
-  from {
-    font-size: 14vw;
-    opacity: 0;
-  }
-  25%  {
-    opacity: 1;
-  }
-  50%  {
-    font-size: 14vw;
-  }
-  to {
-    font-size: 4vw;
-    opacity: .6;
-  }
+from {
+font-size: 14vw;
+opacity: 0;
+}
+25%  {
+opacity: 1;
+}
+50%  {
+font-size: 14vw;
+}
+to {
+font-size: 4vw;
+opacity: .6;
+}
 }
 
 @keyframes slideUp {
-  from {
-    height: 100%;
-    width: 100%;
-  }
-  to {
-    height: 0;
-    width: 0;
-  }
+from {
+height: 100%;
+width: 100%;
+}
+to {
+height: 0;
+width: 0;
+}
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-  }
-  80%  {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+from {
+opacity: 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .cover h1 {
-    animation: welcome 3s linear;
-  }
-  .cover form{
-    animation: appear 4s linear;
-  }
-  .cover.hidden{
-    animation: slideUp .3s linear;
-  }
+80%  {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
 }
 
 @media screen and (max-width: 1600px) {
-  .column {
-    font-size: 1.5em;
-    width: 10vw;
-    height: 10vw;
-    min-width: 10vw;
-    min-height: 10vw;
-  }
+.column {
+font-size: 1.5em;
+width: 10vw;
+height: 10vw;
+min-width: 10vw;
+min-height: 10vw;
+}
 }
 
 @media screen and (max-width: 1200px) {
-  .column {
-    width: 15vw;
-    height: 15vw;
-    min-width: 15vw;
-    min-height: 15vw;
-  }
+.column {
+width: 15vw;
+height: 15vw;
+min-width: 15vw;
+min-height: 15vw;
+}
 }
 
 @media screen and (max-width: 768px) {
-  .columnCoordinate{
-    color: rgba(0,0,0,1);
-  }
+.columnCoordinate{
+color: rgba(0,0,0,1);
+}
 
-  .cover h1 {
-    font-size: 8vw;
-    color: rgba(255, 255, 255, 0.3);
-  }
+.cover h1 {
+font-size: 8vw;
+color: rgba(255, 255, 255, 0.3);
+}
 
-  textarea[name='input'] {
-    width: 75vw;
-    height: 60vh;
-  }
+textarea[name='input'] {
+width: 75vw;
+height: 60vh;
+}
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
-  .cover h1 {
-    font-size: 4vw;
-  }
+.cover h1 {
+font-size: 4vw;
+}
 
-  textarea[name='input'] {
-    height: 50vh;
-  }
+textarea[name='input'] {
+height: 50vh;
+}
 }

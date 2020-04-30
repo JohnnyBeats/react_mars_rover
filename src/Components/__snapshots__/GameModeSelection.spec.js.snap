@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The GameModeSelection component renders two mode buttons without regression 1`] = `
+<div
+  class="gameModeSelection"
+>
+  <button
+    class="gameMode button"
+    data-testid="Multiplayer"
+    value="Multiplayer"
+  >
+    Multiplayer
+  </button>
+  <br />
+  <br />
+  <button
+    class="gameMode button"
+    data-testid="SinglePlayer"
+    value="SinglePlayer"
+  >
+    Single Player
+  </button>
+</div>
+`;

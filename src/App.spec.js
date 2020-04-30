@@ -5,8 +5,26 @@ import App from './App';
 describe("App", () => {
   window.alert = jest.fn();
 
-  it('renders according to spec with cover and form visible', () => {
+  it('renders according to spec with game mode choices available', () => {
     const {container} = render(<App/>);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders according to spec with cover and form visible single payer', () => {
+    const {container, getByTestId} = render(<App/>);
+    const singlePlayerButton = getByTestId('SinglePlayer');
+
+    fireEvent.click(singlePlayerButton);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders according to spec with waiting for players multiplayer', () => {
+    const {container, getByTestId} = render(<App/>);
+    const multiplayerButton = getByTestId('Multiplayer');
+
+    fireEvent.click(multiplayerButton);
+
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -14,11 +32,20 @@ describe("App", () => {
 
     it('Renders with form visible', () => {
       const {getByTestId} = render(<App/>);
+
+      const singlePlayerButton = getByTestId('SinglePlayer');
+
+      fireEvent.click(singlePlayerButton);
+
       expect(getByTestId("inputForm")).toBeVisible();
     });
 
     it('loads rover grid with correct input', async () => {
       const {container, getByTestId, getAllByTestId, findByText} = render(<App/>);
+      const singlePlayerButton = getByTestId('SinglePlayer');
+
+      fireEvent.click(singlePlayerButton);
+
       const startButton = getByTestId('startButton');
       const commandsInput = getByTestId('commandsInput');
 
@@ -41,7 +68,7 @@ describe("App", () => {
       expect(rovers).toHaveLength(2);
 
       expect(container.firstChild).toMatchSnapshot();
-    })
+    });
 
   });
 

@@ -121,6 +121,14 @@ export class RoverEngine{
     };
 }
 
+export class RoverEngineMultiplayer extends RoverEngine{
+    constructor(coordinates, direction, commands, maxGrid, roverTeam, id, name){
+        super(coordinates, direction, commands, maxGrid, roverTeam);
+        this.id = id;
+        this.name = name;
+    }
+}
+
 export class RoverTeam{
     constructor(){
         this.rovers = [];
@@ -131,4 +139,4 @@ export class RoverTeam{
     }
 }
 
-export default {RoverEngine, RoverTeam};
+export default {RoverEngine, RoverEngineMultiplayer, RoverTeam};

@@ -20,10 +20,16 @@ class Rover extends React.Component {
             }
         }
 
+        const getDisplayName = (name) => {
+            return name.split(" ")[0];
+        }
+
         return (
             //Added inline style item here to ensure turning is smooth between directions
             <div data-testid="rover" className={getDirectionClassName(this.props.engine.getDirection()) + (this.props.engine.isActive ? " active" : " inActive")} style={{transform: 'rotate(' + this.props.engine.degreesRotation + 'deg)'}}>
-
+                {this.props.engine.name !== undefined && this.props.engine.name !== "" &&
+                    <span className="roverName"> {getDisplayName(this.props.engine.name)} </span>
+                }
             </div>
         )
     }
